@@ -216,8 +216,8 @@ if __name__ == '__main__':
     r = control_grid(get_gridPoint(),get_distGridPoint(),img)
     save2pgm(r,dir_path + "/Image/grid_convert1.pgm")
 
-    image1 = cv2.imread(dir_path + "/Image/grid_convert.pgm",0)
-    image2 = cv2.imread(dir_path + "/Image/grid_convert1.pgm",0)
+    image1 = cv2.imread(dir_path + "/Image/distlenna.pgm",0)
+    image2 = cv2.imread(dir_path + "/Image/grid_convert.pgm",0)
     res = np.hstack((image1, image2))
     cv2.imshow('image',res)
     cv2.waitKey(0) 

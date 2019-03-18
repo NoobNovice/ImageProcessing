@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt 
 import os
+import cv2
 
 def get_histogram(img_input):
     f = open(img_input,'rb')
@@ -63,7 +64,7 @@ def binary_image(metrix_img, threshold):
     for y in range(len(metrix_img)):
         for x in range(len(metrix_img[0])):
             if metrix_img[y][x] == threshold:
-                result[y][x] = 1
+                result[y][x] = 255
             else: result[y][x] = 0
     return result
 
@@ -92,7 +93,7 @@ def histogram_graph(histogram):
     plt.xlabel("D")
     plt.ylabel("H(D)")
     plt.plot(y)
-    plt.show()
+    plt.savefig("peak_histogram.png")
     return
 
 if __name__ == '__main__':
@@ -120,5 +121,9 @@ if __name__ == '__main__':
         quantity = n_pq + n_qp
         print(peak_histogram[i])
         print("center of mass:({},{})".format(x_hood,y_hood))
-        print("central mooment: u{}{} = {} ,u{}{} = {}".format(p,q,u_pq,q,p,u_qp))
-        print("quantity:{}".format(quantity))
+        print("central moment: u{}{} = {} ,u{}{} = {}".format(p,q,u_pq,q,p,u_qp))
+        print("quantity:{}\n".format(quantity))
+    image = cv2.imread(dir_path + "/Image/scaled_shapes.pgm",0)
+    cv2.imshow('image',image)
+    cv2.waitKey(0) 
+    cv2.destroyAllWindows() 
