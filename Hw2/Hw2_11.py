@@ -40,7 +40,12 @@ def save2pgm(img_metrix,file_name):
     f.write("255\r")
     for i in range(row):
         for j in range(col):
-            f.write((chr(int(img_metrix[i][j]))))
+            if img_metrix[i][j] < 0:
+                f.write(chr(0))
+            elif img_metrix[i][j] > 255:
+                f.write((chr(255)))
+            else:
+                f.write(chr(int(img_metrix[i][j])))
     f.close()
     return
 
