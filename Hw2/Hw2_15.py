@@ -104,6 +104,19 @@ def get_phase(fourier_metrix):
         phase.append(temp)
     return phase
 
+def restore_img(img_metrix):
+    img = [[None]*len(img_metrix) for i in range(len(img_metrix))]
+    for i in range(len(img_metrix)):
+        for k in range(len(img_metrix)):
+            f = img_metrix[i][k]
+            try:
+                f = img_metrix[i+1][k] * img_metrix[i-1][k] * img_metrix[i][k+1] * img_metrix[i][k-1]
+                f = f ** (1/4)
+            except IndexError:
+                pass
+            img[i][k] = f
+    return img
+
 if __name__ == '__main__':
     #=================================================================
     # this code use fourier metrix algebraic (G=FgF and g=F^-1GF^-1).
@@ -124,6 +137,7 @@ if __name__ == '__main__':
 
     print("\nInvert Fourier\n")
     re_amp = invert_fourier(amp,F_invert)
+    re_amp = restore_img(re_amp)
     save2pgm(re_amp,dir_path + "/Image/restoreAmplitude21.pgm")
     image = cv2.imread(dir_path + "/Image/restoreAmplitude21.pgm",0)
     cv2.imshow('image',image)
@@ -131,12 +145,13 @@ if __name__ == '__main__':
     print("#######################################################")
 
 
-    print("\n\n#################### Point 2.1.5.1 ####################")
+    print("\n\n#################### Point 2.1.5.2 ####################")
     print("\nFind phase spectra")
     phase = get_phase(G)
 
     print("\nInvert Fourier\n")
     re_phase = invert_fourier(phase,F_invert)
+    re_phase = restore_img(re_phase)
     for i in range(len(re_phase)):
         for k in range(len(re_phase)):
             re_phase[i][k] *= 50
