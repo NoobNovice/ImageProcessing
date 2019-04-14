@@ -138,8 +138,8 @@ def scaling_img(metrix_img, x_size, y_size):
         for k in range(len(img[0])):
             xp = round(k / x_size * original_sizeX)
             yp = round(i / y_size * original_sizeY)
-            xp = min(xp,original_sizeX)
-            yp = min(yp,original_sizeY)
+            xp = min(xp,original_sizeX - 1)
+            yp = min(yp,original_sizeY - 1)
             img[i][k] = metrix_img[yp][xp]
     return img
 
