@@ -115,7 +115,7 @@ if __name__ == '__main__':
     g = invert_fourier(G_shitf,F_invert)
     print(g)
     save2pgm(g,dir_path + "/Image/Cross20_30.pgm")
-    image = cv2.imread(dir_path + "/Image/Cross20_30.pgm",0)
+    image = cv2.imread(dir_path + "/Image/CrossShift.pgm",0)
     cv2.imshow('image',image)
     cv2.waitKey(0)
 
