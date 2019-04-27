@@ -53,7 +53,7 @@ if __name__ == '__main__':
     dir_path = os.getcwd()
 
     print("\nRead Image")
-    img = cv2.imread(dir_path + '/Image/Lenna.pgm',0)
+    img = cv2.imread(dir_path + '/Image/Cross.pgm',0)
 
     print("\nFourier Transform cross image")
     f = np.fft.fft2(img)
