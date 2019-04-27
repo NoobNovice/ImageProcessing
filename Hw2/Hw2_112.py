@@ -59,17 +59,17 @@ if __name__ == '__main__':
     f = np.fft.fft2(img)
     fshift = np.fft.fftshift(f)
 
-    print("\nFind spectrum and save in to phase21.pgm")
+    print("\nFind spectrum and save in to spectrum21.pgm")
     magnitude_spectrum = 20*np.log(np.abs(fshift))
     save2pgm(magnitude_spectrum,dir_path + "/Image/spectrum21.pgm")
     image = cv2.imread(dir_path + "/Image/spectrum21.pgm",0)
     cv2.imshow('spectrum',image)
     cv2.waitKey(0)
 
-    print("\nFind phase and save in to amplitude21.pgm")
+    print("\nFind phase and save in to phase21.pgm")
     phase = 30*np.angle(fshift)
-    save2pgm(phase,dir_path + "/Image/amplitude21.pgm")
-    image = cv2.imread(dir_path + "/Image/amplitude21.pgm",0)
+    save2pgm(phase,dir_path + "/Image/phase21.pgm")
+    image = cv2.imread(dir_path + "/Image/phase21.pgm",0)
     cv2.imshow('phase',image)
     cv2.waitKey(0)
 
