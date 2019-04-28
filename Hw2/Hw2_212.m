@@ -17,7 +17,7 @@ ideal100 = ifft2(ifftshift(double(D <= D100).*fshift));
 
 figure('Name','Ideal low pass filter');
 subplot(2,2,1);
-imshow(im);
+imshow(img);
 subplot(2,2,2);
 imshow(real(ideal20),[]);
 subplot(2,2,3);
@@ -36,7 +36,7 @@ guass100 = ifft2(ifftshift(double(exp(-(D.^2./(2.*D100.^2)))).*fshift));
 
 figure('Name','Guassian low pass filter');
 subplot(2,2,1);
-imshow(im);
+imshow(img);
 subplot(2,2,2);
 imshow(real(guass20),[]);
 subplot(2,2,3);
@@ -56,7 +56,7 @@ btw100 = ifft2(ifftshift(double(1./(1+(D./D100).^2*n)).*oriShift));
 
 figure('Name','Butterword low pass filter');
 subplot(2,2,1);
-imshow(im);
+imshow(img);
 subplot(2,2,2);
 imshow(real(btw20),[]);
 subplot(2,2,3);
